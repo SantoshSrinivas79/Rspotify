@@ -21,4 +21,3 @@ search<-searchArtist("Foo+fighters")
 
 
 }
-
