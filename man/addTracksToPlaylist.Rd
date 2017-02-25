@@ -4,7 +4,7 @@
 \alias{addTracksToPlaylist}
 \title{Get basic info of an User}
 \usage{
-addTracksToPlaylist(user_id, playlist_id, token)
+addTracksToPlaylist(user_id, playlist_id, track_id, token)
 }
 \arguments{
 \item{user_id}{user id}

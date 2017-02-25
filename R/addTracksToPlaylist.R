@@ -17,13 +17,13 @@
 #'
 #function to retrieve information about a user
 #information about an user
-addTracksToPlaylist<-function(user_id,playlist_id, token){
-  req <- httr::POST(paste0("https://api.spotify.com/v1/users/",user_id,"/playlists/",playlist_id,"/tracks"), httr::config(token = token))
+addTracksToPlaylist<-function(user_id,playlist_id, track_id, token){
+	track_uri <- paste0("spotify:track:", track_id)
+
+	track_uri <- RCurl::curlEscape(track_uri) #Credit: http://stackoverflow.com/questions/8031370/encode-a-query-string-in-r
+  req <- httr::POST(paste0("https://api.spotify.com/v1/users/",user_id,"/playlists/",playlist_id,"/tracks?uris=",track_uri), httr::config(token = token))
   json1<-httr::content(req)
-  dados=data.frame(display_name=json1$display_name,
-                   id=json1$id,
-                   followers=json1$followers$total,stringsAsFactors = F)
-  return(dados)
+  return(json1)
 }
 
 
